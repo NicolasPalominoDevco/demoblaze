@@ -26,7 +26,6 @@ public class Loguearse implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Open.url("https://www.demoblaze.com/#"),
                 Click.on(LINK_LOGIN),
                 Enter.theValue(UsuarioFactory.delRol(rol).getUsuario()).into(TEXT_USUARIO),
                 Enter.theValue(UsuarioFactory.delRol(rol).getPassword()).into(TEXT_CONTRASENA),

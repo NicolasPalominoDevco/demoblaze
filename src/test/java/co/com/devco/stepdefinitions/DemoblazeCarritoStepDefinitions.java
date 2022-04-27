@@ -1,9 +1,6 @@
 package co.com.devco.stepdefinitions;
 
-import co.com.devco.tasks.AgregarAlCarrito;
-import co.com.devco.tasks.EliminarDelCarrito;
-import co.com.devco.tasks.LimpiarCarrito;
-import co.com.devco.tasks.Loguearse;
+import co.com.devco.tasks.*;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
@@ -19,6 +16,7 @@ public class DemoblazeCarritoStepDefinitions {
     @Dado("que {string} se loguea como {string}")
     public void loguin(String actor, String rol) {
         theActorCalled(actor).attemptsTo(
+                Abrir.laPagina(),
                 Loguearse.como(rol),
                 LimpiarCarrito.completamente()
         );
@@ -38,16 +36,19 @@ public class DemoblazeCarritoStepDefinitions {
                 Ensure.that(TITULO_PRODUCTO_CARRITO.of(producto)).hasText(producto)
         );
     }
-/*
+
 //-------------------------------------------------------------------------------
 // Segundo escenario
     @Cuando("{string} agrega el {string} al carrito vacio")
     public void agregarObjetoAlCarritoConActor(String actor,String producto) {
         theActorCalled(actor).attemptsTo(
+                Abrir.laPagina(),
                 LimpiarCarrito.completamente(),
                 AgregarAlCarrito.elProducto(producto)
         );
     }
+
+/*
 //-------------------------------------------------------------------------------
 // Tercer escenario
     @Dado("{string} agrega {string} y {string} al carrito vacio")
@@ -64,5 +65,7 @@ public class DemoblazeCarritoStepDefinitions {
         theActorInTheSpotlight().attemptsTo(
                 EliminarDelCarrito.elProducto(producto)
         );
-    }*/
+    }
+
+ */
 }

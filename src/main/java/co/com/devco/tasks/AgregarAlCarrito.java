@@ -10,6 +10,7 @@ import java.time.Duration;
 
 import static co.com.devco.userinterfaces.DemoblazeDetalleProductoPage.BOTON_AGREGAR_CARRITO;
 import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_CARRITO;
+import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_HOME;
 import static co.com.devco.userinterfaces.DemoblazeProductosPage.LINK_PRODUCTO;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
@@ -31,8 +32,8 @@ public class AgregarAlCarrito implements Task {
         actor.attemptsTo(
                 Click.on(LINK_PRODUCTO.of(producto)),
                 Click.on(BOTON_AGREGAR_CARRITO),
-                WaitUntil.the(LINK_CARRITO, isEnabled()).forNoMoreThan(Duration.ofSeconds(6)),
-                Click.on(LINK_CARRITO)
+                WaitUntil.the(LINK_HOME, isEnabled()).forNoMoreThan(Duration.ofSeconds(6)),
+                Click.on(LINK_HOME)
         );
     }
 }

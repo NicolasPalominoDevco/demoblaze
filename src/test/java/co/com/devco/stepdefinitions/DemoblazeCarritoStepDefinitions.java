@@ -16,7 +16,7 @@ public class DemoblazeCarritoStepDefinitions {
     @Dado("que {string} se loguea como {string}")
     public void loguin(String actor, String rol) {
         theActorCalled(actor).attemptsTo(
-                Abrir.laPagina(),
+                Iniciar.elNavegador(),
                 Loguearse.como(rol),
                 LimpiarCarrito.completamente()
         );
@@ -31,6 +31,7 @@ public class DemoblazeCarritoStepDefinitions {
     @Entonces("debe ver como unico elemento el {string}")
     public void verificarObjetoCarrito(String producto) {
         theActorInTheSpotlight().attemptsTo(
+                Abrir.elCarrito(),
                 Ensure.that(CANTIDAD_PRODUCTOS_CARRITO).values().hasSize(1),
                 //Ensure.that(TITULO_PRODUCTO_CARRITO.of(producto)).isEnabled(),
                 Ensure.that(TITULO_PRODUCTO_CARRITO.of(producto)).hasText(producto)
@@ -42,18 +43,18 @@ public class DemoblazeCarritoStepDefinitions {
     @Cuando("{string} agrega el {string} al carrito vacio")
     public void agregarObjetoAlCarritoConActor(String actor,String producto) {
         theActorCalled(actor).attemptsTo(
-                Abrir.laPagina(),
+                Iniciar.elNavegador(),
                 LimpiarCarrito.completamente(),
                 AgregarAlCarrito.elProducto(producto)
         );
     }
 
-/*
 //-------------------------------------------------------------------------------
 // Tercer escenario
     @Dado("{string} agrega {string} y {string} al carrito vacio")
     public void agregarDosObjetosAlCarrito(String actor, String producto1, String producto2) {
     theActorCalled(actor).attemptsTo(
+            Iniciar.elNavegador(),
             LimpiarCarrito.completamente(),
             AgregarAlCarrito.elProducto(producto1),
             AgregarAlCarrito.elProducto(producto2)
@@ -67,5 +68,13 @@ public class DemoblazeCarritoStepDefinitions {
         );
     }
 
- */
+//-------------------------------------------------------------------------------
+// Tercer escenario
+    @Cuando("{string} agrega {int} {string} al carrito")
+    public void agregarTresObjetosAlCarrito(String actor, int cantidad, String producto) {
+    theActorCalled(actor).attemptsTo(
+
+            EliminarDelCarrito.elProducto(producto)
+        );
+    }
 }

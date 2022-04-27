@@ -1,6 +1,6 @@
-/*package co.com.devco.tasks;
+package co.com.devco.tasks;
 
-import co.com.devco.interactions.ClickPrimerDeleteCarrito;
+import co.com.devco.interactions.ClickDeleteCarrito;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
@@ -9,6 +9,8 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import java.time.Duration;
 
+import static co.com.devco.userinterfaces.DemoblazeCarritoPage.LISTA_PRODUCTOS_CARRITO;
+import static co.com.devco.userinterfaces.DemoblazeCarritoPage.TITULO_PRODUCTO_CARRITO;
 import static co.com.devco.userinterfaces.DemoblazeDetalleProductoPage.BOTON_AGREGAR_CARRITO;
 import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_CARRITO;
 import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_HOME;
@@ -32,13 +34,7 @@ public class EliminarDelCarrito implements Task {
         actor.attemptsTo(
 
                 Click.on(LINK_CARRITO),
-                ClickPrimerDeleteCarrito.elementos(PRODUCTOS_CARRITO),
-                Click.on(LINK_HOME),
-
-                Click.on(LINK_PRODUCTO.of(producto)),
-                Click.on(BOTON_AGREGAR_CARRITO),
-                WaitUntil.the(LINK_CARRITO, isVisible()).forNoMoreThan(Duration.ofSeconds(6)),
-                Click.on(LINK_CARRITO)
+                ClickDeleteCarrito.elProducto(TITULO_PRODUCTO_CARRITO.of(producto))
         );
     }
-}*/
+}

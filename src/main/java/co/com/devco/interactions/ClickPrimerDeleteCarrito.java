@@ -11,25 +11,24 @@ import java.time.Duration;
 
 import static co.com.devco.userinterfaces.DemoblazeCarritoPage.LINK_PRIMER_DELETE_PRODUCTOS_CARRITO;
 import static co.com.devco.userinterfaces.DemoblazeCarritoPage.CANTIDAD_PRODUCTOS_CARRITO;
-import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_CARRITO;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class ClickPrimerDeleteCarrito implements Interaction {
-    private Target elementos;
+    private Target productos;
 
-    public ClickPrimerDeleteCarrito(Target elementos) {
-        this.elementos = elementos;
+    public ClickPrimerDeleteCarrito(Target productos) {
+        this.productos = productos;
     }
 
-    public static ClickPrimerDeleteCarrito elementos(Target elementos){
-        return new ClickPrimerDeleteCarrito(elementos);
+    public static ClickPrimerDeleteCarrito productos(Target productos){
+        return new ClickPrimerDeleteCarrito(productos);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        elementos = CANTIDAD_PRODUCTOS_CARRITO;
-        ListOfWebElementFacades deletes = this.elementos.resolveAllFor(actor);
+        productos = CANTIDAD_PRODUCTOS_CARRITO;
+        ListOfWebElementFacades deletes = this.productos.resolveAllFor(actor);
         Integer cantidadElementos = deletes.size();
 
         if(cantidadElementos != 0)

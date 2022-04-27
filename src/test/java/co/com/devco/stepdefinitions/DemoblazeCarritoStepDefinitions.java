@@ -1,7 +1,7 @@
 package co.com.devco.stepdefinitions;
 
 import co.com.devco.tasks.AgregarAlCarrito;
-//import co.com.devco.tasks.EliminarDelCarrito;
+import co.com.devco.tasks.EliminarDelCarrito;
 import co.com.devco.tasks.LimpiarCarrito;
 import co.com.devco.tasks.Loguearse;
 import io.cucumber.java.es.Cuando;
@@ -30,14 +30,15 @@ public class DemoblazeCarritoStepDefinitions {
                 AgregarAlCarrito.elProducto(producto)
         );
     }
-    @Entonces("debe ver como único elemento el {string}")
+    @Entonces("debe ver como unico elemento el {string}")
     public void verificarObjetoCarrito(String producto) {
         theActorInTheSpotlight().attemptsTo(
-                //Ensure.that(PRODUCTOS_CARRITO_INSIDE).values().hasSize(1),
-                Ensure.that(TITULO_PRODUCTO_CARRITO.of(producto)).isEnabled()
+                Ensure.that(CANTIDAD_PRODUCTOS_CARRITO).values().hasSize(1),
+                //Ensure.that(TITULO_PRODUCTO_CARRITO.of(producto)).isEnabled(),
+                Ensure.that(TITULO_PRODUCTO_CARRITO.of(producto)).hasText(producto)
         );
     }
-    /*
+/*
 //-------------------------------------------------------------------------------
 // Segundo escenario
     @Cuando("{string} agrega el {string} al carrito vacio")

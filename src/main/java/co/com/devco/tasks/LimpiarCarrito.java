@@ -21,7 +21,7 @@ public class LimpiarCarrito implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Click.on(LINK_CARRITO),
-                ClickPrimerDeleteCarrito.elementos(LISTA_PRODUCTOS_CARRITO),
+                ClickPrimerDeleteCarrito.productos(LISTA_PRODUCTOS_CARRITO),
                 Click.on(LINK_HOME)
         );
     }

@@ -12,6 +12,7 @@ import static co.com.devco.userinterfaces.DemoblazeDetalleProductoPage.BOTON_AGR
 import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_CARRITO;
 import static co.com.devco.userinterfaces.DemoblazeProductosPage.LINK_PRODUCTO;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class AgregarAlCarrito implements Task {
@@ -30,7 +31,7 @@ public class AgregarAlCarrito implements Task {
         actor.attemptsTo(
                 Click.on(LINK_PRODUCTO.of(producto)),
                 Click.on(BOTON_AGREGAR_CARRITO),
-                WaitUntil.the(LINK_CARRITO, isVisible()).forNoMoreThan(Duration.ofSeconds(6)),
+                WaitUntil.the(LINK_CARRITO, isEnabled()).forNoMoreThan(Duration.ofSeconds(6)),
                 Click.on(LINK_CARRITO)
         );
     }

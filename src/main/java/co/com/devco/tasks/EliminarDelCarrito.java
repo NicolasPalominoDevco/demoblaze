@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.actions.Click;
 
 import static co.com.devco.userinterfaces.DemoblazeCarritoPage.*;
 import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_CARRITO;
+import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_HOME;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class EliminarDelCarrito implements Task {
@@ -25,7 +26,8 @@ public class EliminarDelCarrito implements Task {
         actor.attemptsTo(
 
                 Click.on(LINK_CARRITO),
-                Click.on(LINK_DELETE_DEL_PRODUCTO.of(producto))
+                Click.on(LINK_DELETE_DEL_PRODUCTO.of(producto)),
+                Click.on(LINK_HOME)
         );
     }
 }

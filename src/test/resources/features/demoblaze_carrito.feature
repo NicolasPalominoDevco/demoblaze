@@ -24,5 +24,5 @@ Característica: Carrito de compras
     Entonces debe ver como unico elemento el "Nexus 6"
 
   Escenario: Agregar 3 Samsung galaxy s6 al carrito
-    Cuando  "Luci" agrega "3" "Samsung galaxy s6" al carrito
+    Cuando  "Lucy" agrega "3" "Samsung galaxy s6" al carrito
     Entonces debe ver "3" elementos de "Samsung galaxy s6"

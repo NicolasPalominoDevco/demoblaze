@@ -8,30 +8,21 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import java.time.Duration;
 
-import static co.com.devco.userinterfaces.DemoblazeDetalleProductoPage.BOTON_AGREGAR_CARRITO;
 import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_CARRITO;
 import static co.com.devco.userinterfaces.DemoblazeIndexPage.LINK_HOME;
-import static co.com.devco.userinterfaces.DemoblazeProductosPage.LINK_PRODUCTO;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
-public class AgregarAlCarrito implements Task {
-    private String producto;
-
-    public AgregarAlCarrito(String producto) {
-        this.producto = producto;
-    }
-
-    public static Performable elProducto(String producto) {
-        return instrumented(AgregarAlCarrito.class, producto);
+public class IngresarAlHome implements Task {
+    public static Performable desdeElIndex() {
+        return instrumented(IngresarAlHome.class);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(LINK_PRODUCTO.of(producto)),
-                Click.on(BOTON_AGREGAR_CARRITO)
+                WaitUntil.the(LINK_HOME, isEnabled()).forNoMoreThan(Duration.ofSeconds(6)),
+                Click.on(LINK_HOME)
         );
     }
 }

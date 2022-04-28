@@ -24,10 +24,9 @@ public class LimpiarCarrito implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitUntil.the(LINK_CARRITO, isEnabled()).forNoMoreThan(Duration.ofSeconds(6)),
-                Click.on(LINK_CARRITO),
+                IngresarAlCarrito.desdeElIndex(),
                 ClickPrimerDeleteCarrito.productos(LISTA_PRODUCTOS_CARRITO),
-                Click.on(LINK_HOME)
+                IngresarAlHome.desdeElIndex()
         );
     }
 }

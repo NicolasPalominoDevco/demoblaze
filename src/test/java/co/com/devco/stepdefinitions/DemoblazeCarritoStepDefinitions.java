@@ -31,9 +31,8 @@ public class DemoblazeCarritoStepDefinitions {
     @Entonces("debe ver como unico elemento el {string}")
     public void verificarObjetoCarrito(String producto) {
         theActorInTheSpotlight().attemptsTo(
-                Abrir.elCarrito(),
+                IngresarAlCarrito.desdeElIndex(),
                 Ensure.that(CANTIDAD_PRODUCTOS_CARRITO).values().hasSize(1),
-                //Ensure.that(TITULO_PRODUCTO_CARRITO.of(producto)).isEnabled(),
                 Ensure.that(TITULO_PRODUCTO_CARRITO.of(producto)).hasText(producto)
         );
     }
@@ -57,6 +56,7 @@ public class DemoblazeCarritoStepDefinitions {
             Iniciar.elNavegador(),
             LimpiarCarrito.completamente(),
             AgregarAlCarrito.elProducto(producto1),
+            IngresarAlHome.desdeElIndex(),
             AgregarAlCarrito.elProducto(producto2)
         );
     }
@@ -69,12 +69,21 @@ public class DemoblazeCarritoStepDefinitions {
     }
 
 //-------------------------------------------------------------------------------
-// Tercer escenario
-    @Cuando("{string} agrega {int} {string} al carrito")
-    public void agregarTresObjetosAlCarrito(String actor, int cantidad, String producto) {
+// Cuarto escenario
+    @Cuando("{string} agrega {string} {string} al carrito")
+    public void agregarTresObjetosAlCarrito(String actor, String cantidad, String producto) {
     theActorCalled(actor).attemptsTo(
+            Iniciar.elNavegador(),
+            LimpiarCarrito.completamente(),
+            AgregarLosSiguientesProductos.alCarrito(cantidad,producto)
+        );
+    }
 
-            EliminarDelCarrito.elProducto(producto)
+    @Entonces("debe ver {string} elementos de {string}")
+    public void verificarExistenciaObjetosEnCarrito(String cantidad, String producto)
+    {
+        theActorInTheSpotlight().attemptsTo(
+                Ensure.that(PRODUCTOS_CARRITO_TIPO.of(producto)).values().hasSize(Integer.parseInt(cantidad))
         );
     }
 }
